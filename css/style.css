@@ -507,13 +507,13 @@ img {
     justify-content: space-between;
     align-items: stretch; /* Ensures columns stretch to the height of the tallest item for vertical centering */
     min-height: 350px;
-    gap: 30px;
+    gap: 0px;
     flex-wrap: wrap; 
 }
 
 /* Add vertical spacing between the first and second row */
 .services-wrapper .services-row + .services-row {
-    margin-top: 50px; 
+    margin-top: 0px; 
 }
 
 
@@ -541,7 +541,8 @@ img {
     width: 80%; /* Sets the requested 80% width */
     margin: 0 auto; /* Centers the 80% width block horizontally (default for row 1) */
     text-align: left; /* Ensures the text aligns to the left (default for row 1) */
-    padding: 0; 
+    padding: 0;
+    margin-left: 0;
 }
 
 /* 7.5.1. Right Alignment for Wrapper Content in Row 2 (Finalized Margins) */
@@ -585,8 +586,8 @@ img {
 /* 7.8. Image Styling */
 .services-image {
     /* Dimensions as requested */
-    width: 587px;
-    height: 316px;
+    width: 100%;
+    height:100%;
     object-fit: cover; 
     display: block;
     max-width: 100%; 
