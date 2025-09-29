@@ -1,0 +1,860 @@
+/*==================================
+  1. Basic CSS Reset
+  ==================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ ;
+    /* Removed font-family here as it's correctly applied to body */
+}
+
+/*==================================
+  2. CSS Variable Definitions (Colors)
+  ==================================*/
+:root {
+    /* IBTIDA Creations Specific Colors (UPDATED NAVBAR BG) */
+    --ibtida-primary-color: #27666D;    /* Logo Box Background */
+    --ibtida-navbar-bg: #FFFFFF;        /* Navbar Background Color: White (#FFFF) */
+    --ibtida-secondary-color: #007bff;  /* Placeholder: Use this for link hover/active color */
+
+    /* Generic Colors (Placeholders - Update later) */
+    --heading-color: #212529;     
+    --body-text-color: #343a40;   
+    --light-bg: #f8f9fa;          
+    --dark-bg: #343a40;           
+}
+
+/*==================================
+  3. Base Styles
+  ==================================*/
+
+/* Apply Montserrat Font Globally */
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--body-text-color); 
+    background-color: var(--light-bg); 
+    line-height: 1.6; 
+    -webkit-font-smoothing: antialiased; 
+}
+
+/* Reset Links */
+a {
+    text-decoration: none;
+    color: var(--body-text-color); /* Use body text color as default link color */
+}
+
+/* Base Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color); 
+    font-weight: 700; 
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+/* Remove default list styles */
+ul, ol {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+/*==================================
+  4. Custom Styles (Header Section)
+  ==================================*/
+
+/* Header Container: Sticky and Full Width */
+.ibtida-header {
+    /*position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1020; *//* Bootstrap standard z-index for fixed/sticky headers */
+}
+
+/* Logo Box Styling (Background and Dimensions) */
+.logo-box {
+    background-color: var(--ibtida-primary-color);
+    height: 149px;
+    width: 100%;
+    
+    /* Flexbox to horizontally center the logo image */
+    display: flex;
+    justify-content: center; /* Horizontal Center */
+    /* Vertical centering (align-items: center) is removed to allow 'top' property on the image. */
+}
+
+/* Logo Image Styling (Specific Dimensions and Offset) */
+.logo-box img {
+    /* Specific dimensions provided */
+    width: 146px;
+    height: 96px;
+    
+    /* Positioning to achieve the 27px offset from the top */
+    position: relative;
+    top: 27px;
+    
+    /* Ensures image is contained */
+    max-height: 100%; 
+    max-width: 100%;
+}
+
+/* Navbar Box - Container for the Bootstrap Nav */
+.navbar-box {
+    width: 100%; 
+}
+
+/* Custom Nav Link Styling (Specific Font, Size, and Spacing) */
+.navbar-box .nav-link {
+    /* Font Styles (Font weight 400, Size 15px) */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 15px;
+    
+    /* Vertical Spacing: 33px top and bottom margin */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+    /* Line Height and Letter Spacing (100% line-height) */
+    line-height: 1; 
+    letter-spacing: 0;
+    
+    /* Custom color (Overriding Bootstrap's text-light/text-dark defaults) */
+    color: var(--ibtida-primary-color) !important;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+/* Ensure padding is adjusted for margin control, only adding horizontal padding */
+.navbar-nav .nav-item {
+    padding: 0 1rem; /* Horizontal space between links */
+}
+
+/* Custom Nav Link Hover Effect */
+.navbar-box .nav-link:hover,
+.navbar-box .nav-link.active {
+    /* Hover effect: change color to the defined secondary color */
+    color: var(--ibtida-secondary-color) !important; 
+}
+
+
+/* 5.1. HERO BOX (Box 1) */
+.hero-section {
+    /* Set dimensions (773px height as requested) */
+    width: 100%;
+    height: 773px;
+    
+    /* Background Image setup */
+    background-image: url('../images/home.jpg'); /* The image you specified */
+    background-size: cover;
+    background-position: center;
+    
+    /* Box Shadow as requested */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); /* #00000040 converted to rgba */
+    position: relative; 
+}
+
+/* ... (All CSS before 5.2 remains the same) ... */
+
+/* 5.2. ABOUT BOX (Box 2) - UPDATED STYLES */
+#about-section {
+    /* Container Styling */
+    background-color: #F8F8F8;
+    width: 80%; /* Width is 80% of its parent */
+    margin: 60px auto; 
+    padding: 60px 0; 
+}
+
+/* About Paragraph Styling (Unchanged) */
+.about-text {
+    /* Dimensions and Alignment */
+    text-align: center;
+    
+    /* Font Styles */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; 
+    font-size: 20px;
+    line-height: 1; 
+    letter-spacing: 0;
+    color: #5C5A5A;
+    padding: 0 15px; 
+}
+
+.about-text span {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 20px;
+    line-height: 1; /* 100% line-height */
+    letter-spacing: 0;
+    /* text-align and vertical-align are for block/table elements, not inline spans, but applied for completeness */
+    text-align: center; 
+    vertical-align: middle;
+}
+
+/* Container for the 4 Image Boxes (FORCING SINGLE ROW) */
+.about-image-grid {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: nowrap; /* Forces all items onto a single line */
+    gap: 30px; 
+}
+
+/* Styling for each individual image box (BORDER REMOVED, made flexible) */
+.about-image-box {
+    /* Flexible dimensions for single row layout */
+    flex-grow: 1; 
+    flex-basis: 0; /* Ensures even space distribution */
+    
+    max-width: 427px; /* Limits max size to the requested width */
+    height: 427px; /* Fixed height for aspect ratio */
+    
+    /* Styling */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+    /* BORDER REMOVED */
+    
+    overflow: hidden; 
+}
+
+/* Image styling to ensure it covers the box */
+.about-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* ... (All CSS before 5.3 remains the same) ... */
+
+/* 5.3. VISION BOX (Box 3) - NEW STYLES */
+#vision-section {
+    /* Container Styling */
+    background-color: #FFFFFF; /* White background as requested */
+    width: 80%;
+    
+    /* Margin for spacing below (matching About section structure for consistency) */
+    margin: 0 auto; 
+    
+    /* Padding for internal spacing */
+    padding: 60px 0; /* 60px vertical padding as requested */
+}
+
+/* Vision Paragraph Styling */
+.vision-text {
+    /* Dimensions and Alignment */
+    text-align: center;
+    
+    /* Font Styles */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 20px;
+    line-height: 1; /* 100% line-height */
+    letter-spacing: 0;
+    
+    /* Color */
+    color: #5C5A5A;
+    
+    margin: 0 auto 30px auto; /* Centering and adding bottom margin */
+    padding: 0 15px; 
+    max-width: 1200px; /* Limiting width for readability, similar to About text */
+}
+
+/* Container for the 2 Image Boxes */
+.vision-image-row {
+    display: flex;
+    justify-content: center; /* Center the images container */
+    flex-wrap: nowrap; /* Keep them in one row */
+    gap: 30px; /* Margin between images */
+    margin-top: 50px; /* Spacing below the paragraph */
+}
+
+/* Styling for each individual image box */
+.vision-image-box {
+    /* Dimensions and flexibility */
+    flex-grow: 1; 
+    flex-basis: 0; /* Ensures even space distribution in the row */
+    height: 310px; /* Fixed height as requested */
+    
+    /* Ensure image inside fills the box */
+    overflow: hidden; 
+}
+
+/* Image styling to ensure it covers the box */
+.vision-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the 310px height */
+}
+
+/* Note: Assumes --ibtida-primary-color: #27666D; is defined in :root */
+
+/*==================================
+  6. Custom Styles (Footer Section)
+  ==================================*/
+
+/* 6.1. Main Footer Container */
+#main-footer {
+    width: 100%;
+    background-color: transparent; 
+    color: var(--body-text-color);
+    padding: 0;
+}
+
+/* 6.2. Upper Info Box (Primary Color Background & Padding) */
+.footer-info-box {
+    background-color: var(--ibtida-primary-color); /* #27666D */
+    color: #FFFFFF;
+
+    /* PADDING: Top 40px, Bottom 20px, 0px left/right */
+    padding: 40px 0 20px 0;
+}
+
+/* 6.2.1. Inner 80% Wrapper for Content */
+.footer-80-wrapper {
+    width: 80%;
+    margin: 0 auto; /* Center the 80% width box */
+    
+    /* Flexbox setup for clustering Cols 1 & 2 on the left */
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start;
+    gap: 30px; /* Space between columns */
+    
+    flex-wrap: wrap; 
+}
+
+/* 6.2.2. Styles for the three internal column boxes */
+.footer-col-box {
+    /* Columns only take up the width of their content */
+    flex-basis: auto; 
+    flex-grow: 0; 
+    min-width: 250px; 
+
+    /* Alignment for content within columns (set to left for links/text) */
+    text-align: left;
+    
+    /* Default spacing adjustment */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* 6.2.3. PUSHES THE THIRD COLUMN (Logo Box) TO THE RIGHT */
+.footer-col-box:nth-child(3) {
+    margin-left: auto; /* Pushes this specific box to the far right */
+    min-width: 146px; /* Matches the logo width */
+    margin-top: 30px;
+    /* These three lines ensure the logo is perfectly centered within the box: */
+    display: flex; /* 1. Enables Flexbox for alignment */
+    flex-direction: column; /* 2. Sets primary axis vertically (optional, but good practice) */
+    align-items: center; /* 3. Centers content horizontally */
+    justify-content: center; /* 4. Centers content vertically */
+    
+    /* Center the content of the logo box (redundant with flex, but safe) */
+    text-align: center; 
+}
+
+/* 6.2.4. Logo Styling */
+.footer-logo {
+    width: 146px; 
+    height: 96px; 
+    object-fit: contain; 
+}
+
+/* 6.2.5. Footer Logo Text & Contact Styles (Column 1) */
+.footer-logo-text {
+    /* Base Font Styles (for "CREATIONS" part) */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.53px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: left; /* Ensure alignment */
+}
+
+/* Style for the <span> wrapper (for "IBTIDA" part) */
+.footer-logo-text span {
+    font-weight: 700; /* Bold */
+}
+
+/* Container for Contact Links */
+.footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left; /* Ensure list aligns left */
+}
+
+.footer-contact-list li {
+    margin-bottom: 8px;
+}
+
+.footer-contact-link {
+    /* Font Styles */
+    font-family: 'Montserrat', sans-serif; /* Corrected to Montserrat */
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px; /* Corrected line-height */
+    letter-spacing: 0;
+    color: #FFFFFF; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Container for Social Icons */
+.footer-social-icons {
+    display: flex;
+    justify-content: flex-start; /* Aligns icons to the left */
+    align-items: center;
+    gap: 30px; 
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer-social-icon {
+    width: 24px; 
+    height: 24px; 
+    object-fit: contain;
+    display: block; 
+}
+
+/* 6.2.6. Footer Navigation Styles (Column 2) */
+.footer-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Ensure alignment is left */
+}
+
+.footer-nav-list li {
+    margin-bottom: 8px;
+}
+
+.footer-nav-list a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1; 
+    letter-spacing: 0;
+    
+    color: #FFFFFF;
+    text-decoration: none;
+    
+    transition: color 0.3s ease;
+}
+
+.footer-nav-list a:hover {
+    color: var(--ibtida-secondary-color, #CCCCCC); 
+}
+
+
+/* 6.3. Lower Copyright Bar */
+.footer-copyright-bar {
+    height: 46px;
+    background-color: #033F63; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 6.3.1. Copyright Text Styling */
+.footer-copyright-bar p {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 0; 
+    text-align: center;
+}
+
+
+/*==================================
+  7. Custom Styles (Services Section)
+  ==================================*/
+
+/* 7.1. 80% Wrapper */
+.services-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center; /* Centers the header */
+}
+
+/* 7.2. OUR SERVICES Header */
+.services-header {
+    /* Font Styles */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #5C5A5A;
+    text-transform: uppercase;
+    
+    /* Margin */
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* 7.3. Two-Column Row Layout (Base) */
+.services-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Ensures columns stretch to the height of the tallest item for vertical centering */
+    min-height: 350px;
+    gap: 30px;
+    flex-wrap: wrap; 
+}
+
+/* Add vertical spacing between the first and second row */
+.services-wrapper .services-row + .services-row {
+    margin-top: 50px; 
+}
+
+
+/* 7.4. Individual Columns (Equal Size) - Flex setup for vertical centering */
+.services-col {
+    flex-basis: 0;
+    flex-grow: 1; /* Makes them equal size */
+    min-width: 300px; 
+    
+    /* Flexbox setup to center the inner content wrapper vertically and horizontally */
+    display: flex;
+    align-items: center; /* Vertical centering of the 80% wrapper */
+    justify-content: center; /* Horizontal centering (for the standard left-aligned row 1) */
+}
+
+/* 7.4.1. Right Alignment for Text Column in Row 2 */
+.services-col.services-right-align {
+    /* Pushes the 80% wrapper to the RIGHT edge of the column */
+    justify-content: flex-end; 
+}
+
+
+/* 7.5. Inner Wrapper for Text Content - Controls 80% width and alignment */
+.services-text-wrapper {
+    width: 80%; /* Sets the requested 80% width */
+    margin: 0 auto; /* Centers the 80% width block horizontally (default for row 1) */
+    text-align: left; /* Ensures the text aligns to the left (default for row 1) */
+    padding: 0; 
+}
+
+/* 7.5.1. Right Alignment for Wrapper Content in Row 2 (Finalized Margins) */
+.services-col.services-right-align .services-text-wrapper {
+    text-align: right; /* Ensures text inside the 80% wrapper aligns to the right */
+    
+    /* Pushes the 80% block to the right edge of the column */
+    margin-left: auto; 
+    margin-right: 0;
+    
+    /* Ensures no unwanted horizontal padding */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/* 7.6. Text Header (h3) */
+.services-col-header {
+    /* Font Styles */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #27666D; 
+    
+    margin-bottom: 15px;
+}
+
+/* 7.7. Body Text (p) */
+.services-col-body {
+    /* Font Styles */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: #5C5A5A;
+}
+
+/* 7.8. Image Styling */
+.services-image {
+    /* Dimensions as requested */
+    width: 587px;
+    height: 316px;
+    object-fit: cover; 
+    display: block;
+    max-width: 100%; 
+}
+
+
+/*==================================
+  8. Custom Styles (Architecture & Interior Section)
+  ==================================*/
+
+/* 8.1. Section Wrapper (80% Width) */
+.arch-interior-wrapper {
+  
+    margin: 0 auto;
+    padding: 30px 0; /* Add top/bottom padding inside the wrapper */
+    text-align: center; /* Default center alignment for intro text */
+}
+
+/* 8.2. Introductory Paragraph (Placeholder Typography) */
+.arch-intro-text span {
+    /* Font Styles as requested */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600; /* SemiBold */
+    line-height: 1; /* 100% line-height */
+    letter-spacing: 0;
+    
+    /* Alignment */
+    text-align: center;
+    color: var(--body-text-color, #5C5A5A);
+    
+    /* Spacing */
+    max-width: 900px;
+    margin: 0 auto 50px auto; /* Center paragraph and add spacing below */
+}
+.arch-intro-text  {
+    /* Font Styles as requested */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400; /* SemiBold */
+    line-height: 1; /* 100% line-height */
+    letter-spacing: 0;
+    /* MODIFIED: Sets max width to 70% */
+    max-width: 70%;
+    /* Alignment */
+    text-align: center;
+    color: var(--body-text-color, #5C5A5A);
+    
+    /* Spacing */
+ 
+    margin: 0 auto 50px auto; /* Center paragraph and add spacing below */
+}
+
+/* 8.6. New Promotional Services Box (arch-promo-box) */
+.arch-promo-box {
+    /* Layout and Background */
+    width: 100%; /* Spans full width of the 80% wrapper */
+    margin-top: 80px; /* Add significant spacing above the box */
+    padding: 60px 20px; /* Generous padding top/bottom */
+    
+    background-color: #033F63; /* Dark Blue Background */
+    color: #FFFFFF; /* All text defaults to white */
+    text-align: center;
+}
+
+/* 8.6.1. H3 Title Styling */
+.arch-promo-title {
+    /* Typography */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold */
+    font-size: 24px;
+    line-height: 1; /* 100% line-height */
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    
+    /* Spacing */
+ 
+    margin-bottom: 20px;
+}
+
+/* 8.6.2. Paragraph List Styling */
+.arch-promo-body {
+    /* Typography */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 20px;
+    line-height: 2; /* 100% line-height */
+    letter-spacing: 0;
+    color: #FFFFFF;
+    
+    /* Alignment */
+    text-align: center;
+    
+    /* Remove default paragraph margin */
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*==================================
+  8. Custom Styles (Architecture & Interior Section)
+  ==================================*/
+
+/* ... (8.1 through 8.6 remain the same) ... */
+
+/* 8.7. Why Choose Us Info Box */
+.arch-info-box {
+    /* Layout and Background */
+    width: 100%; /* Spans full width of the 80% wrapper */
+    height: 511px; /* Fixed height as requested */
+    margin-top: 20px; /* Spacing below the promo box */
+    
+    background-color: #F5F5F5; /* Light Gray Background */
+    text-align: center; /* Centers the H3 */
+    
+    /* Use Flexbox to manage the vertical space inside the box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start content from the top */
+    padding-top: 20px; /* Add some spacing from the top edge */
+}
+
+/* 8.7.1. H3 Header Styling */
+.info-box-header {
+    /* Typography */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* SemiBold */
+    font-size: 20px;
+    line-height: 1; /* 100% line-height */
+    letter-spacing: 0;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color: #27666D; /* Primary Color */
+    
+    margin-top: 0;
+    margin-bottom: 30px; /* Space below header */
+}
+
+/* 8.7.2. Content Wrapper (80% of arch-info-box width) */
+.info-content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center the columns relative to each other */
+    
+    width: 80%; /* 80% width relative to the parent arch-info-box */
+    max-width: 1200px; /* Optional: Sets a max width limit */
+    gap: 30px;
+}
+
+/* 8.7.3. Two-Column Layout */
+.info-col {
+    flex-basis: 0;
+    flex-grow: 1;
+    min-width: 300px; 
+    
+    /* Ensure the text column content is centered vertically */
+    display: flex;
+    align-items: center; 
+}
+
+/* 8.7.4. Image Styling */
+.info-image {
+    width: 582px; /* Fixed width */
+    height: 314px; /* Fixed height */
+    object-fit: cover;
+    display: block;
+    max-width: 100%; /* Ensure responsiveness */
+}
+
+/* 8.7.5. Paragraph List Styling */
+.info-list-text {
+    /* Typography */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400; /* Regular */
+    font-size: 20px;
+    line-height: 54px; /* Large line height for spacing list items */
+    letter-spacing: 0;
+    text-transform: capitalize;
+    color: #797979; /* Custom body text color */
+    
+    /* Reset margins for clean alignment */
+    margin: 0; 
+    text-align: left; /* Left align the text within its column */
+}
+
+
+/*==================================
+  8.8. Portfolio Image Grid (REVISED FOR 30px HORIZONTAL AND VERTICAL GAP)
+  ==================================*/
+
+.portfolio-wrapper {
+    /* Sets the requested 80% width relative to its parent section */
+    width: 80%;
+    margin: 50px auto 0 auto; /* Centers the wrapper and adds top margin */
+}
+
+.portfolio-grid {
+    /* Container for all rows */
+    display: flex;
+    flex-direction: column;
+    /* UPDATED: Vertical space between the rows is now 30px */
+    gap: 10px; 
+}
+
+.portfolio-row {
+    display: flex;
+    /* Horizontal space between the two columns in the row is 30px */
+    gap: 10px; 
+    width: 100%;
+}
+
+.portfolio-col {
+    /* Set the base width to exactly 50% */
+    flex-basis: 50%;
+    flex-grow: 0; 
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Image Styling: 100% width of its 50%-width column */
+.portfolio-image {
+    width: 100%;
+    height: 320px; /* Fixed height requested */
+    object-fit: cover; 
+    display: block;
+}
+
+/* Responsive Adjustments: Stacking on smaller screens */
+@media (max-width: 768px) {
+    .portfolio-wrapper {
+        width: 90%; 
+    }
+    .portfolio-row {
+        /* On small screens, stack the images vertically */
+        flex-direction: column;
+        /* UPDATED: Vertical gap on mobile stack is also 30px for consistency */
+        gap: 10px; 
+    }
+    .portfolio-col {
+        /* On small screens, take up the full width (100%) */
+        flex-basis: 100%;
+    }
+    .portfolio-image {
+        /* Reduce the height slightly on smaller screens */
+        height: 250px;
+    }
+    /* Removed the previous redundant margin for stacked images as 'gap' handles it */
+    .portfolio-grid .portfolio-row {
+        /* Vertical space between rows on mobile */
+        margin-bottom: 30px;
+    }
+}
+
+/* 5.1. HERO BOX (Box 1) */
+.contact-section {
+    /* Set dimensions (773px height as requested) */
+    width: 100%;
+    height: 549px;
+    
+    /* Background Image setup */
+    background-image: url('../images/contactus.png'); /* The image you specified */
+    background-size: cover;
+    background-position: center;
+    
+    /* Box Shadow as requested */
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); /* #00000040 converted to rgba */
+    position: relative; 
+}
+
